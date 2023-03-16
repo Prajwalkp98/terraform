@@ -5,6 +5,7 @@ resource "aws_instance" "terraform_instance1" {
     tags = {
         Name = "terraform"
     }
+    //ghjfhj
   
 }  
 
