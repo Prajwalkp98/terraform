@@ -10,3 +10,13 @@ variable "ami_id" {
     default = "ami-0f8ca728008ff5af4"
     //fgdf
 }
+variable "key_name" {
+    type = string
+    default = "my_pem"
+    //fgdf
+}
+variable "key_path" {
+    type = string
+    default = "./keys/my_pem.pem"
+    //fgdf
+}
