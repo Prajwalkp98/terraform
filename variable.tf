@@ -17,6 +17,6 @@ variable "key_name" {
 }
 variable "key_path" {
     type = string
-    default = "./terraform/keys/my_pem.pem"
+    default = "./keys/my_pem.pem"
     //fgdf
 }
