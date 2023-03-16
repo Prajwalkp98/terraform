@@ -6,14 +6,4 @@ resource "aws_instance" "terraform_instance1" {
         Name = "terraform"
     }
   
-} 
-
-
-resource "aws_s3_bucket" "bucket" {
-    bucket = "prjwal9876"
-
-    tags = {
-        Name = "mybucket1"
-    }
-  
-} 
+}  
