@@ -1,28 +1,23 @@
-resource "aws_instance" "terraform_instance1" {
-    ami = var.ami_id
-    instance_type = var.ec2_type
-    key_name = aws_key_pair.pem_file.key_name
-    tags = {
-        Name = "terraform"
-    }
-    //ghjfhj
-  
-}  
+ module "create_sg" {
+   source = "./modules/create_s3"
+   sg_name = var.root_sg_name
+ }
+ 
+ module "create_pem" {
+   source = "./modules/create_pem"
+   key_name = var.root_key_name
+   key_path = var.root_key_path
+ }
+ 
+ 
+  module "create_ec2" {
+    source = "./modules/create_ec2"
+    ami_id = var.root_ec2_ami
+    ec2_type = var.root_ec2_type
+    ec2_pem = module.create_pem.ec2_pem
+    ec2_sg_id = module.create_s3.sg_id
+  }
 
-resource "tls_private_key" "rsa" {
-  algorithm = "RSA"
-  rsa_bits = 4096
-}
 
-resource "aws_key_pair" "pem_file" {
-  key_name = var.key_name
-  public_key = tls_private_key.rsa.public_key_openssh
-}
-
-resource "local_file" "pem-key" {
-    content = tls_private_key.rsa.private_key_pem
-    filename = var.key_path
-  
-}
 
 
