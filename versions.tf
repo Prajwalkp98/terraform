@@ -6,6 +6,13 @@ terraform {
         version = ">= 4.51.0"
     }
  }
+
+  backend "s3" {
+     bucket = "my-s3-terraform-backend-98765"
+     key = "main/terraform.tfstate"
+     region = "ap-south-1"
+
+  }
 }
 
  
