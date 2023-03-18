@@ -18,6 +18,17 @@
     ec2_sg_id = module.create_sg.sg_id
   }
 
+  module "create_s3" {
+     source = "./modules/create_s3"
+      bucket_name = var.root_s3_backend_name
+  }
+
+  module "create_dynamodb" {
+     source = "./modules/create_dynamodb"
+      dynamodb_name = var.root_dynamodb_name
+      hash_key = var.root_dynamodb_key
+  }
+
 
 
 
