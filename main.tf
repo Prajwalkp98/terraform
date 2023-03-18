@@ -25,7 +25,7 @@
 
   module "create_dynamodb" {
      source = "./modules/create_dynamodb"
-      dynamodb_name = var.root_dynamodb_name
+      aws_dynamodb_name = var.root_dynamodb_name
       hash_key = var.root_dynamodb_key
   }
 
