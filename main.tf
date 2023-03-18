@@ -29,6 +29,13 @@
       hash_key = var.root_dynamodb_key
   }
 
-
+module "file_provisioner" {
+    source = "./modules/file_provisionar"
+    ec2_public_ip = module.create_ec2.ec2_public_ip_address
+    ec2_user = var.root_ec2_user
+    ec2_pem = var.root_key_path
+    source_path = var.root_source_path
+    destination_path = var.root_destination_path
+}
 
 
