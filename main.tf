@@ -38,4 +38,15 @@ module "file_provisioner" {
     destination_path = var.root_destination_path
 }
 
+module "remote_provisioner" {
+    source = "./modules/remote-exec"
+    ec2_public_ip = module.create_ec2.ec2_public_ip_address
+    ec2_user = var.root_ec2_user
+    ec2_pem = var.root_key_path
+}
 
+module "local_provisioner" {
+    source = "./modules/local-exec"
+    ec2_public_ip = module.create_ec2.ec2_public_ip_address
+    
+}
